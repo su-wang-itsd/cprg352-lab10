@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException{
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         session.setAttribute("email", email);
+        session.setAttribute("role",user.getRole().getRoleId());
         
         if (user.getRole().getRoleId() == 1) {
             response.sendRedirect("admin");
